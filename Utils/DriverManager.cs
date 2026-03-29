@@ -4,11 +4,11 @@ namespace AutomationTestsNet.Utils
 {
     public sealed class DriverManager
     {
-        public static readonly Lazy<DriverManager> instance = new Lazy<DriverManager>(() => new DriverManager());
+        private static readonly Lazy<DriverManager> instance = new Lazy<DriverManager>(() => new DriverManager());
         
         private static readonly ThreadLocal<IWebDriver> threadLocal = new ThreadLocal<IWebDriver>();
 
-        private static DriverManager Instance => instance.Value;
+        public static DriverManager Instance => instance.Value;
 
         private DriverManager() { }
 
