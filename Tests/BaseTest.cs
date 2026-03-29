@@ -5,16 +5,9 @@ using OpenQA.Selenium;
 namespace AutomationTestsNet.Tests
 {
     [Parallelizable(ParallelScope.All)]
-    public abstract class BaseTest
+    public abstract class BaseTest(BrowserType browserType)
     {
-        private readonly BrowserType browser;
-
-        protected BaseTest(BrowserType browserType)
-        {
-            browser = browserType;
-        }
-
-        protected IWebDriver Driver => DriverManager.Instance.GetDriver(browser);
+        protected IWebDriver Driver => DriverManager.Instance.GetDriver(browserType);
 
         [SetUp]
         public void SetUp()

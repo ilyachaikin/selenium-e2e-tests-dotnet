@@ -2,10 +2,13 @@
 
 namespace AutomationTestsNet.Pages
 {
-    public class OverviewPage : BasePage
+    public class OverviewPage(IWebDriver driver) : BasePage(driver)
     {
-        public OverviewPage(IWebDriver driver) : base(driver) { }
+        public CompletePage Finish()
+        {
+            driver.FindElement(By.Id("finish")).Click();
 
-
+            return new CompletePage(driver);
+        }
     }
 }

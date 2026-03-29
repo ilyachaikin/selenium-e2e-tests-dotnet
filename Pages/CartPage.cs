@@ -2,10 +2,8 @@
 
 namespace AutomationTestsNet.Pages
 {
-    public class CartPage : BasePage
+    public class CartPage(IWebDriver driver) : BasePage(driver)
     {
-        public CartPage(IWebDriver driver) : base(driver) { }
-
         public string GetItemName()
         {
             var cartItem = driver.FindElement(By.ClassName("cart_item"));
