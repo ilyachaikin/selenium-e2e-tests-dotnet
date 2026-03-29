@@ -9,7 +9,7 @@ namespace AutomationTestsNet
         {
             try
             {
-                var indexPage = new IndexPage(BrowserType.Chrome);
+                var indexPage = new IndexPage();
 
                 indexPage.Open().Login("standard_user", "secret_sauce");
             }

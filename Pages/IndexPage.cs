@@ -3,13 +3,11 @@ using OpenQA.Selenium;
 
 namespace AutomationTestsNet.Pages
 {
-    public class IndexPage
+    public class IndexPage : BasePage
     {
         private static string Url { get; } = "https://www.saucedemo.com/";
 
-        private readonly IWebDriver driver;
-
-        public IndexPage(BrowserType browser) => this.driver = DriverManager.Instance.GetDriver(browser);
+        public IndexPage(IWebDriver driver) : base(driver) { }
 
         public IndexPage Open()
         {
@@ -17,7 +15,7 @@ namespace AutomationTestsNet.Pages
             return this;
         }
 
-        public void Login(string username, string password)
+        public ProductPage Login(string username, string password)
         {
             var inputUsername = driver.FindElement(By.Id("user-name"));
             var inputPassword = driver.FindElement(By.Id("password"));
@@ -26,6 +24,8 @@ namespace AutomationTestsNet.Pages
             inputUsername.SendKeys(username);
             inputPassword.SendKeys(password);
             loginButton.Click();
+
+            return new ProductPage(driver);
         }
     }
 }
