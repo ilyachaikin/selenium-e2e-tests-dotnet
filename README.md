@@ -13,3 +13,12 @@ End-to-End automation tests for [saucedemo.com](https://www.saucedemo.com/) usin
 Run all tests (Chrome + Firefox in parallel):
 ```bash
 dotnet test
+```
+
+## How to generate Allure report
+
+Generate allure report after testing:
+```bash
+allure serve allure-results
+```
+
