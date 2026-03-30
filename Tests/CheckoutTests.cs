@@ -1,4 +1,5 @@
-﻿using AutomationTestsNet.Pages;
+﻿using Allure.NUnit.Attributes;
+using AutomationTestsNet.Pages;
 using AutomationTestsNet.Utils;
 using NUnit.Framework;
 
@@ -6,11 +7,15 @@ namespace AutomationTestsNet.Tests
 {
     [TestFixture(BrowserType.Chrome)]
     [TestFixture(BrowserType.Firefox)]
+    [AllureSuite("Checkout Tests")]
     public class CheckoutTests(BrowserType browser) : BaseTest(browser)
     {
         [TestCase("Sauce Labs Backpack")]
         [TestCase("Sauce Labs Bike Light")]
         [TestCase("Sauce Labs Bolt T-Shirt")]
+        [AllureTag("End-to-End")]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
+        [AllureOwner("Chaikin Ilya")]
         public void AddProduct_ShouldAppearInCart(string expectedItem)
         {
             var indexPage = new IndexPage(Driver);

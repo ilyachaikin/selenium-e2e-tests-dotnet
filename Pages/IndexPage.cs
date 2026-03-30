@@ -27,5 +27,10 @@ namespace AutomationTestsNet.Pages
 
             return new ProductPage(driver);
         }
+
+        public string GetErrorMessage()
+        {
+            return driver.FindElement(By.CssSelector("div.error h3")).Text;
+        }
     }
 }
