@@ -21,6 +21,8 @@ namespace AutomationTestsNet.Tests
                 .SelectItem(expectedItem)
                 .NavigateToCart();
 
+            var itemName = cartPage.GetItemName();
+
             var completePage = cartPage
                 .NavigateToCheckout()
                 .FillInfo("Ilya", "Chaikin", "111111")
@@ -28,7 +30,7 @@ namespace AutomationTestsNet.Tests
 
             Assert.Multiple(() =>
             {
-                Assert.That(cartPage.GetItemName(), Is.EqualTo(expectedItem), $"Expected result '{expectedItem}', but found '{cartPage.GetItemName()}'");
+                Assert.That(itemName, Is.EqualTo(expectedItem), $"Expected result '{expectedItem}', but found '{itemName}'");
                 Assert.That(completePage.OrderIsSuccess(), Is.True, "Order is failed");
             });
         }

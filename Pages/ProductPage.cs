@@ -13,7 +13,7 @@ namespace AutomationTestsNet.Pages
             foreach (var element in itemList)
             {
                 var itemName = element.FindElement(By.ClassName("inventory_item_name"));
-                var addButton = element.FindElement(By.ClassName("btn btn_primary btn_small btn_inventory "));
+                var addButton = element.FindElement(By.ClassName("btn_inventory"));
 
                 if (itemName.Text == name)
                 {
