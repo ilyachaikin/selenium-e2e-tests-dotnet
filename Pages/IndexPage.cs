@@ -1,13 +1,10 @@
-﻿using AutomationTestsNet.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace AutomationTestsNet.Pages
 {
-    public class IndexPage : BasePage
+    public class IndexPage(IWebDriver driver) : BasePage(driver)
     {
         private static string Url { get; } = "https://www.saucedemo.com/";
-
-        public IndexPage(IWebDriver driver) : base(driver) { }
 
         public IndexPage Open()
         {
@@ -17,9 +14,9 @@ namespace AutomationTestsNet.Pages
 
         public ProductPage Login(string username, string password)
         {
-            var inputUsername = driver.FindElement(By.Id("user-name"));
-            var inputPassword = driver.FindElement(By.Id("password"));
-            var loginButton = driver.FindElement(By.Id("login-button"));
+            var inputUsername = driver.FindElement(By.CssSelector("#user-name"));
+            var inputPassword = driver.FindElement(By.CssSelector("#password"));
+            var loginButton = driver.FindElement(By.CssSelector("#login-button"));
 
             inputUsername.SendKeys(username);
             inputPassword.SendKeys(password);

@@ -6,7 +6,7 @@ namespace AutomationTestsNet.Pages
     {
         public CompletePage Finish()
         {
-            driver.FindElement(By.Id("finish")).Click();
+            driver.FindElement(By.CssSelector("#finish")).Click();
 
             return new CompletePage(driver);
         }

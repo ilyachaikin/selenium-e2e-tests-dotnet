@@ -19,7 +19,7 @@ namespace AutomationTestsNet.Tests
         {
             var indexPage = new IndexPage(Driver);
 
-            var catalogPage = indexPage
+            indexPage
                 .Open()
                 .Login(user, pass);
 

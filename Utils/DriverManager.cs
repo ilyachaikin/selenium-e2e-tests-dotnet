@@ -4,9 +4,9 @@ namespace AutomationTestsNet.Utils
 {
     public sealed class DriverManager
     {
-        private static readonly Lazy<DriverManager> instance = new Lazy<DriverManager>(() => new DriverManager());
+        private static readonly Lazy<DriverManager> instance = new(() => new DriverManager());
         
-        private static readonly ThreadLocal<IWebDriver> threadLocal = new ThreadLocal<IWebDriver>();
+        private static readonly ThreadLocal<IWebDriver> threadLocal = new();
 
         public static DriverManager Instance => instance.Value;
 
@@ -14,10 +14,7 @@ namespace AutomationTestsNet.Utils
 
         public IWebDriver GetDriver (BrowserType browser)
         {
-            if(threadLocal.Value == null)
-            {
-                threadLocal.Value = WebDriverFactory.CreateWebDriver(browser);
-            }
+            threadLocal.Value ??= WebDriverFactory.CreateWebDriver(browser);
 
             return threadLocal.Value!;
         }

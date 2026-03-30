@@ -2,20 +2,18 @@
 
 namespace AutomationTestsNet.Pages
 {
-    public class CartPage : BasePage
+    public class CartPage(IWebDriver driver) : BasePage(driver)
     {
-        public CartPage(IWebDriver driver) : base(driver) { }
-
         public string GetItemName()
         {
-            var cartItem = driver.FindElement(By.ClassName("cart_item"));
+            var cartItem = driver.FindElement(By.CssSelector(".cart_item"));
 
-            return cartItem.FindElement(By.ClassName("inventory_item_name")).Text;
+            return cartItem.FindElement(By.CssSelector(".inventory_item_name")).Text;
         }
 
         public CheckoutPage NavigateToCheckout()
         {
-            driver.FindElement(By.ClassName("checkout_button")).Click();
+            driver.FindElement(By.CssSelector(".checkout_button")).Click();
 
             return new CheckoutPage(driver);
         }

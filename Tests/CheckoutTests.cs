@@ -33,11 +33,11 @@ namespace AutomationTestsNet.Tests
                 .FillInfo("Ilya", "Chaikin", "111111")
                 .Finish();
 
-            Assert.Multiple(() =>
+            using (Assert.EnterMultipleScope())
             {
                 Assert.That(itemName, Is.EqualTo(expectedItem), $"Expected result '{expectedItem}', but found '{itemName}'");
                 Assert.That(completePage.OrderIsSuccess(), Is.True, "Order is failed");
-            });
+            }
         }
     }
 }

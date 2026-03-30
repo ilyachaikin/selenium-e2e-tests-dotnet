@@ -6,11 +6,11 @@ namespace AutomationTestsNet.Pages
     {
         public OverviewPage FillInfo(string firstName, string lastName, string zipCode)
         {
-            driver.FindElement(By.Name("firstName")).SendKeys(firstName);
-            driver.FindElement(By.Name("lastName")).SendKeys(lastName);
-            driver.FindElement(By.Name("postalCode")).SendKeys(zipCode);
+            driver.FindElement(By.CssSelector("#first-name")).SendKeys(firstName);
+            driver.FindElement(By.CssSelector("#last-name")).SendKeys(lastName);
+            driver.FindElement(By.CssSelector("#postal-code")).SendKeys(zipCode);
 
-            driver.FindElement(By.Id("continue")).Click();
+            driver.FindElement(By.CssSelector("#continue")).Click();
 
             return new OverviewPage(driver);
         }

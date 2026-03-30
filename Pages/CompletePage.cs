@@ -6,7 +6,7 @@ namespace AutomationTestsNet.Pages
     {
         public bool OrderIsSuccess()
         {
-            var message = driver.FindElement(By.ClassName("complete-header")).Text;
+            var message = driver.FindElement(By.CssSelector(".complete-header")).Text;
 
             if (message == "Thank you for your order!")
             {
